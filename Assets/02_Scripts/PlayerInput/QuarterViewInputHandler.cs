@@ -9,10 +9,15 @@ public class QuarterViewInputHandler : PlayerInputHandler
 {
     [SerializeField] Transform _cameraTransform;
 
-    public override event Action<Vector3> OnMoveInput;
-
-    public override void FixedUpdate()
+    /// <summary>
+    /// 쿼터뷰 카메라 기준으로 이동 입력을 변환하여 전달
+    /// </summary>
+    /// <param name="inputValue"></param>
+    public override void OnMove(InputValue inputValue)
     {
+        Vector2 moveInput = inputValue.Get<Vector2>();
+        _moveInput = new Vector3(moveInput.x, 0, moveInput.y);
+
         Vector3 moveDir = _moveInput;
 
         // 쿼터뷰 카메라 기준으로 변환
@@ -27,6 +32,6 @@ public class QuarterViewInputHandler : PlayerInputHandler
             moveDir = camForward * _moveInput.z + camRight * _moveInput.x;
         }
 
-        OnMoveInput?.Invoke(moveDir);
+        _moveInput = moveDir.normalized;
     }
 }

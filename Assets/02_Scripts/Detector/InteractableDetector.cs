@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 /// <summary>
 /// 상호작용 가능한 물체를 감지하는 컴포넌트로
@@ -10,6 +11,8 @@ public class InteractableDetector : MonoBehaviour
     [SerializeField] LayerMask _targetMask; // 감지할 대상 레이어 마스크
 
     Collider[] _hits = new Collider[5]; // 감지된 콜라이더를 저장할 배열
+
+    public event Action<IInteractable> OnInteractableDetected; // 상호작용 가능한 물체가 감지되었을 때 발생하는 이벤트
 
     private void Update()
     {
@@ -25,7 +28,7 @@ public class InteractableDetector : MonoBehaviour
             var interactable = col.GetComponent<IInteractable>();
             if (interactable != null)
             {
-                interactable.Interact(gameObject); // 상호작용 메서드 호출
+                OnInteractableDetected?.Invoke(interactable);
                 break; // 하나만 상호작용하고 종료
             }
         }

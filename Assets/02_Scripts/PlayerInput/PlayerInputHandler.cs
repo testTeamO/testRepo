@@ -9,33 +9,54 @@ using UnityEngine.InputSystem;
 public class PlayerInputHandler : InputHandler
 {
     public override event Action<Vector3> OnMoveInput;
-    public override event Action<Vector2> OnLookInput;
+    public override event Action<Vector2> OnMousePositionChanged;
+    public override event Action OnInteractInput;
+
+    public void FixedUpdate()
+    {
+        // 이동 입력에 대한 이벤트 발행
+        OnMoveInput?.Invoke(_moveInput);
+
+        // 마우스 위치 입력에 대한 함수 실행
+        GetMousePosition();
+    }
 
     /// <summary>
-    /// 이동 입력을 받았을 때 Vector2 형태의 입력값을 Vector3 형태로 변환하여 저장
+    /// 이동 입력을 받았을 때 Vector2 형태의 입력값을 Vector3 형태로 변환하여 저장하는 함수
     /// </summary>
     /// <param name="inputValue"></param>
-    public void OnMove(InputValue inputValue)
+    public virtual void OnMove(InputValue inputValue)
     {
         Vector2 moveInput = inputValue.Get<Vector2>();
         _moveInput = new Vector3(moveInput.x, 0, moveInput.y);
     }
 
     /// <summary>
-    /// 마우스 이동 입력을 받았을 때 입력값을 저장하고 이벤트 발행
+    /// 마우스 입력을 받아 현재 마우스 위치를 저장하고 이벤트 발행하는 함수
     /// </summary>
-    /// <param name="inputValue"></param>
-    public void OnLook(InputValue inputValue)
+    public virtual void GetMousePosition()
     {
-        Vector2 lookInput = inputValue.Get<Vector2>();
-        _lookInput = lookInput;
-        OnLookInput?.Invoke(_lookInput);
+        _mousePosition = Mouse.current.position.ReadValue();
+        OnMousePositionChanged?.Invoke(_mousePosition);
     }
 
-    public virtual void FixedUpdate()
+    public void OnInteract(InputValue inputValue)
     {
-        //Debug.Log(_moveInput);
-        // 매 fixedtime마다 이동 입력 이벤트를 발생시킴
-        OnMoveInput?.Invoke(_moveInput);
+        if (inputValue.isPressed)
+        {
+            OnInteractInput?.Invoke();
+        }
     }
+
+    ///// <summary>
+    ///// 마우스 이동 입력을 받았을 때 입력값을 저장하고 이벤트 발행
+    ///// </summary>
+    ///// <param name="inputValue"></param>
+    //public void OnLook(InputValue inputValue)
+    //{
+    //    Vector2 lookInput = inputValue.Get<Vector2>();
+    //    _lookInput = lookInput;
+    //    OnLookInput?.Invoke(_lookInput);
+    //}
+
 }
