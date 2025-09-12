@@ -45,6 +45,7 @@ public class PlayerInputHandler : InputHandler
         if (inputValue.isPressed)
         {
             OnInteractInput?.Invoke();
+            Debug.Log("상호작용 키 눌림");
         }
     }
 
