@@ -31,4 +31,12 @@ public class TestClass : MonoBehaviour
     {
         Debug.Log($"텍스트 출력하기 : {text}");
     }
+
+    /// <summary>
+    /// 브랜치 테스트
+    /// </summary>
+    public void BranchTest()
+    {
+        Debug.Log("Branch Test");
+    }
 }
