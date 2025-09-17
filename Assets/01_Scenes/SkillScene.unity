@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 166559174}
   - component: {fileID: 166559173}
   - component: {fileID: 166559172}
+  - component: {fileID: 166559175}
   m_Layer: 5
   m_Name: SkillBtn_2
   m_TagString: Untagged
@@ -242,6 +243,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 166559170}
   m_CullTransparentMesh: 1
+--- !u!114 &166559175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166559170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee1c39ea8aa033a429ecb44507373758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillImage: {fileID: 1412684209}
+  skillScirpt: {fileID: 1591909120}
+  skillLevel: {fileID: 433014591}
 --- !u!1 &166770970
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,6 +438,7 @@ GameObject:
   - component: {fileID: 194008628}
   - component: {fileID: 194008627}
   - component: {fileID: 194008629}
+  - component: {fileID: 194008630}
   m_Layer: 5
   m_Name: SkillBtn_1
   m_TagString: Untagged
@@ -533,6 +550,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &194008630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194008625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee1c39ea8aa033a429ecb44507373758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillImage: {fileID: 1862791047}
+  skillScirpt: {fileID: 1461054483}
+  skillLevel: {fileID: 211483304}
 --- !u!1 &211483302
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,7 +834,7 @@ GameObject:
   - component: {fileID: 333872402}
   - component: {fileID: 333872401}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: SkillChooseSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -826,6 +858,10 @@ MonoBehaviour:
   skillFour: {fileID: 626073237}
   skillFive: {fileID: 626073238}
   preSkillCompany: {fileID: 0}
+  skillBtns:
+  - {fileID: 194008630}
+  - {fileID: 166559175}
+  - {fileID: 1240059320}
 --- !u!4 &333872402
 Transform:
   m_ObjectHideFlags: 0
@@ -1594,6 +1630,7 @@ GameObject:
   - component: {fileID: 1240059319}
   - component: {fileID: 1240059318}
   - component: {fileID: 1240059317}
+  - component: {fileID: 1240059320}
   m_Layer: 5
   m_Name: SkillBtn_3
   m_TagString: Untagged
@@ -1705,6 +1742,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1240059315}
   m_CullTransparentMesh: 1
+--- !u!114 &1240059320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240059315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee1c39ea8aa033a429ecb44507373758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillImage: {fileID: 1939826210}
+  skillScirpt: {fileID: 713519511}
+  skillLevel: {fileID: 2098020900}
 --- !u!1 &1269407382
 GameObject:
   m_ObjectHideFlags: 0

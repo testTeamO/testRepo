@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class SkillChoose : MonoBehaviour
 {
+
+
 		/// <summary>
 		/// 회사 Dictionary
 		/// </summary>
@@ -15,6 +17,9 @@ public class SkillChoose : MonoBehaviour
 		[SerializeField] private Skill_Five skillFive;
 
 		public SkillBase preSkillCompany;
+
+		public SkillBtn[] skillBtns;
+
 
 		void Start()
 		{
@@ -72,11 +77,6 @@ public class SkillChoose : MonoBehaviour
 						{
 								// 해당 회사의 스킬을 뽑고 업그레이드
 								tempNum = Random.Range(0, 10);
-								Vector2Int upgradeSkill = CompanyDic[preSkillCompany][tempNum];
-								Debug.Log("PreCompany" + upgradeSkill.ToString());
-								upgradeSkill.y += 1;
-								if (upgradeSkill.y == 1) preSkillCompany.currentSkillCnt++;
-								CompanyDic[preSkillCompany][tempNum] = upgradeSkill;
 								return;
 						}
 				}
@@ -107,12 +107,19 @@ public class SkillChoose : MonoBehaviour
 
 				// 해당 회사의 스킬을 뽑고 업그레이드
 				tempNum = Random.Range(0, 10);
-				Vector2Int tempSkill = CompanyDic[preSkillCompany][tempNum];
-				Debug.Log(preSkillCompany + tempSkill.ToString());
-				tempSkill.y += 1;
-				if (tempSkill.y == 1) preSkillCompany.currentSkillCnt++;
-				CompanyDic[preSkillCompany][tempNum] = tempSkill;
 				return;
 
+		}
+
+		/// <summary>
+		/// 뽑은 스킬 업그레이드
+		/// </summary>
+		public void SkillUpgrade(int skillNum)
+		{
+				Vector2Int upgradeSkill = CompanyDic[preSkillCompany][skillNum];
+				Debug.Log("PreCompany" + upgradeSkill.ToString());
+				upgradeSkill.y += 1;
+				if (upgradeSkill.y == 1) preSkillCompany.currentSkillCnt++;
+				CompanyDic[preSkillCompany][skillNum] = upgradeSkill;
 		}
 }
